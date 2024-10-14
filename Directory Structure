@@ -1,0 +1,11 @@
+/project_folder
+    /templates
+        index.html
+    /static
+        /css
+            style.css
+    flask_api.py
+    logreg.pkl
+    requirements.txt
+    Dockerfile
+    .dockerignore
