@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Prediction App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Customer Prediction App</h1>
+        
+        <!-- Form for query parameters prediction -->
+        <h2>Make a Prediction</h2>
+        <form action="/predict" method="POST">
+            <label for="age">Age:</label><br>
+            <input type="number" id="age" name="age" required><br><br>
+
+            <label for="new_user">New User (0 or 1):</label><br>
+            <input type="number" id="new_user" name="new_user" required><br><br>
+
+            <label for="total_pages_visited">Total Pages Visited:</label><br>
+            <input type="number" id="total_pages_visited" name="total_pages_visited" required><br><br>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction_text %}
+            <h3>{{ prediction_text }}</h3>
+        {% endif %}
+
+        <hr>
+
+        <!-- File upload form for file prediction -->
+        <h2>Upload CSV for Batch Prediction</h2>
+        <form action="/predict_file" method="POST" enctype="multipart/form-data">
+            <label for="file">Upload CSV:</label><br>
+            <input type="file" id="file" name="file" required><br><br>
+
+            <input type="submit" value="Predict from File">
+        </form>
+        
+        {% if prediction_text %}
+            <h3>{{ prediction_text }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
